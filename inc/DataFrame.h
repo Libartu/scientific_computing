@@ -1,3 +1,6 @@
+#ifndef DATA_FRAME_H
+#define DATA_FRAME_H
+
 #include <iostream>
 #include <iterator>
 #include <fstream>
@@ -6,36 +9,16 @@
 #include <sstream>
 
 
-std::vector<std::string> split(const std::string& s, char delimiter)
-{
-	std::vector<std::string> tokens;
-	std::string token;
-	std::istringstream tokenStream(s);
-	while (std::getline(tokenStream, token, delimiter))
-	{
-		tokens.push_back(token);
-	}
-
-	return tokens;
-}
+std::vector<std::string> split(const std::string& s, char delimiter);
 
 
-void convertType(std::string lineItem, double &value)
-{
-	value = stod(lineItem);
-}
+void convertType(std::string lineItem, double &value);
 
 
-void convertType(std::string lineItem, int &value)
-{
-	value = stoi(lineItem);
-}
+void convertType(std::string lineItem, int &value);
 
 
-void convertType(std::string lineItem, std::string &value)
-{
-	value = lineItem;
-}
+void convertType(std::string lineItem, std::string &value);
 
 
 // helper function to print a tuple of any size
@@ -92,16 +75,6 @@ std::vector<T> loadData(std::string fileName, char delimiter)
 	return sheet;
 }
 
-/* Move to class named dataframe  */
-/* Add slicing and copying to eigen structs */
-/* Use type traits for checking data types in template. */
-int main()
-{
-	std::string fileName{"/home/bojan/bin/eclipse/workspace/Testing/src/datingTestSet.txt"};
-	using rowTypes = std::tuple<int, double, double, std::string>;
-
-	std::vector<rowTypes> dataFrame = loadData<rowTypes>(fileName, '\t');
+#endif
 
 
-	return 0;
-}
