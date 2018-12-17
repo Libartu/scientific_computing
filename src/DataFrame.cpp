@@ -1,5 +1,7 @@
 #include "DataFrame.h"
 
+namespace DataFrame
+{
 
 std::vector<std::string> split(const std::string& s, char delimiter)
 {
@@ -31,3 +33,5 @@ void convertType(std::string lineItem, std::string &value)
 {
 	value = lineItem;
 }
+
+} // namespace DataFrame
