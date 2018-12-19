@@ -1,15 +1,28 @@
+#include "gtest/gtest.h"
 #include "DataFrame.h"
 
+using rowTypes = std::tuple<int, double, double, std::string>;
 
-/* Move to class named dataframe  */
-/* Add slicing and copying to eigen structs */
-/* Use type traits for checking data types in template. */
-int main()
+
+std::string fileName{"datingTestSet.txt"};
+
+
+
+TEST(DataFrameTestFixfure, CheckDataSizes)
 {
-	std::string fileName{"test/data/datingTestSet.txt"};
-	using rowTypes = std::tuple<int, double, double, std::string>;
-
 	std::vector<rowTypes> dataFrame = DataFrame::loadData<rowTypes>(fileName, '\t');
+	EXPECT_EQ(dataFrame.size(), 1000);
+}
 
-	return 0;
+TEST(DataFrameTestFixfure, CheckColumnDataTypes)
+{
+	std::vector<rowTypes> dataFrame = DataFrame::loadData<rowTypes>(fileName, '\t');
+}
+
+
+
+int main (int argc, char** argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+
+    return  RUN_ALL_TESTS();
 }
