@@ -73,13 +73,18 @@ static void convert(std::vector<std::string>& line, std::tuple<Args...>& t)
 
 
 template <class T>
-std::vector<T> loadData(std::string fileName, char delimiter)
+std::vector<T> loadData(std::string fileName, char delimiter, bool hasHeader)
 {
 	std::ifstream in(fileName);
 	std::vector<std::string> lines;
 	std::vector<T> sheet;
 
 	std::string line;
+	if (hasHeader)
+	{
+		std::getline(in, line);
+	}
+
 	while (std::getline(in, line))
 	{
 		lines.push_back(line.erase(line.size() - 1));
@@ -99,5 +104,3 @@ std::vector<T> loadData(std::string fileName, char delimiter)
 }  // namespace DataFrame
 
 #endif
-
-
