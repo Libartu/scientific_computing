@@ -3,7 +3,7 @@
 
 using rowTypes = std::tuple<int, double, double, std::string>;
 
-std::string fileName{"/home/bojan/Homework/GitHub/scientific_computing/build/test/datingTestSet.txt"};
+std::string fileName{TEST_SET_1};
 
 
 // Checks if loaded data has correct size
